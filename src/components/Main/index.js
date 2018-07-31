@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Switch } from 'react-router-dom';
-import LoginForm from '../LoginForm';
-import SignupForm from '../SignupForm';
-import Homepage from '../Homepage';
+import LoginForm from '../../containers/LoginForm';
+import SignupForm from '../../containers/SignupForm';
+import Homepage from '../../containers/Homepage';
 import NoAuthRoute from '../../containers/NoAuthRoute';
 import ProtectedRoute from '../../containers/ProtectedRoute';
 

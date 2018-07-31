@@ -26,9 +26,19 @@ export default class LoginForm extends Component {
       <div>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="username">Username</label>
-          <input type="text" name="username" onChange={this.handleChange} />
-          <label htmlFor="username">Password</label>
-          <input type="password" name="password" onChange={this.handleChange} />
+          <input
+            type="text"
+            name="username"
+            onChange={this.handleChange}
+            value={this.state.username}
+          />
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            onChange={this.handleChange}
+            value={this.state.password}
+          />
           <button type="submit">Login</button>
         </form>
         <span>Not yet a member?</span>
