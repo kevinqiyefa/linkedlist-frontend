@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import LoginForm from '../LoginForm';
 import SignupForm from '../SignupForm';
 import Homepage from '../Homepage';
+import NoAuthRoute from '../../containers/NoAuthRoute';
 import ProtectedRoute from '../../containers/ProtectedRoute';
 
 export default class Main extends Component {
@@ -10,8 +11,10 @@ export default class Main extends Component {
     return (
       <div className="container">
         <Switch>
-          <Route exact path="/login" render={LoginForm} />
-          <Route exact path="/signup" render={SignupForm} />
+          {/* NoAuthRoutes only let you go to them if you haven't authenticated */}
+          <NoAuthRoute exact path="/login" component={LoginForm} />
+          <NoAuthRoute exact path="/signup" component={SignupForm} />
+          {/* ProtectedRoutes only let you go to them if you are authenticated */}
           <ProtectedRoute exact path="/" component={Homepage} />
         </Switch>
       </div>
