@@ -3,7 +3,7 @@ import NoAuthRoute from '../../components/NoAuthRoute';
 
 function mapStateToProps(reduxState) {
   return {
-    isAuthenticated: reduxState.isAuthenticated
+    isAuthenticated: reduxState.auth.isAuthenticated
   };
 }
 

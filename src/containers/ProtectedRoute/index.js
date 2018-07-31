@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
-import NoAuthRoute from '../../components/NoAuthRoute';
+import ProtectedRoute from '../../components/ProtectedRoute';
 
 function mapStateToProps(reduxState) {
   return {
-    isAuthenticated: reduxState.isAuthenticated
+    isAuthenticated: reduxState.auth.isAuthenticated
   };
 }
 
 export default connect(
   mapStateToProps,
   null
-)(NoAuthRoute);
+)(ProtectedRoute);
