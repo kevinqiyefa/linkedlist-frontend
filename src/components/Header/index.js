@@ -9,6 +9,7 @@ export default class Header extends Component {
         {/* Search Form */}
         {/* Search Dropdown */}
         {/* Current User Photo & DropDown */}
+        {this.props.cool && <h1> cool af </h1>}
       </div>
     );
   }
