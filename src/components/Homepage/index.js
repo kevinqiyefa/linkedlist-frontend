@@ -1,21 +1,19 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import Header from '../Header';
 
-const Homepage = ({ currentUser }) => {
-  if (!currentUser.isAuthenticated) {
+export default class Homepage extends Component {
+  render() {
+    const { jobs } = this.props;
     return (
       <div>
-        <h1>Welcome to Linked List!</h1>
-        <Link to="/signup">Sign up here</Link>
+        <Header />
+        <h1>Jobs</h1>
       </div>
     );
   }
-  return <h1>You are logged in!</h1>;
-};
+}
 
 Homepage.propTypes = {
   currentUser: PropTypes.object
 };
-
-export default Homepage;
