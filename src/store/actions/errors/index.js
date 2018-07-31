@@ -1,10 +1,14 @@
-import { SET_ERROR, REMOVE_ERROR } from '../actionTypes';
+import * as t from '../actionTypes';
 
-export const addError = error => ({
-  type: SET_ERROR,
-  error
-});
+export function setError(error) {
+  return {
+    type: t.SET_ERROR,
+    error
+  };
+}
 
-export const removeError = () => ({
-  type: REMOVE_ERROR
-});
+export function clearError() {
+  return {
+    type: t.CLEAR_ERROR
+  };
+}

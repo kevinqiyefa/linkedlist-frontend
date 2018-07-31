@@ -1,11 +1,15 @@
 import * as t from '../actionTypes';
+import { callAPI } from '../../../services/api';
 
 export function fetchJobsRequest() {
   return async dispatch => {
     try {
+      // tell everyone we're making the request
       dispatch({ type: t.FETCH_JOBS_REQUEST });
-      let jobs = await apiCall('get', `/jobs`);
-      dispatch(fetchJobsSuccess());
+      // call the API for /jobs, auth required
+      let jobs = await callAPI('get', '/jobs', true);
+      // dispatch the success action creator and the jobs that we got back
+      dispatch(fetchJobsSuccess(jobs));
     } catch (error) {
       dispatch(fetchJobsFail(error));
       return Promise.reject();

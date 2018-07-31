@@ -5,9 +5,14 @@ const DEFAULT_STATE = { hasError: false, message: '', details: '' };
 export default function errorReducer(state = DEFAULT_STATE, action) {
   switch (action.type) {
     case t.SET_ERROR:
-      return { ...state, hasError: true, message: action.error };
-    case t.REMOVE_ERROR:
-      return { ...state, hasError: true, message: '' };
+      return {
+        ...state,
+        hasError: true,
+        message: action.error.message,
+        details: action.error.details || ''
+      };
+    case t.CLEAR_ERROR:
+      return { ...state, hasError: false, message: '' };
     case t.CREATE_USER_FAIL:
       return {
         ...state,
