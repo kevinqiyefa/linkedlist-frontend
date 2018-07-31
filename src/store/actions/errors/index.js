@@ -1,7 +1,7 @@
-import { ADD_ERROR, REMOVE_ERROR } from "../actionTypes";
+import { SET_ERROR, REMOVE_ERROR } from '../actionTypes';
 
 export const addError = error => ({
-  type: ADD_ERROR,
+  type: SET_ERROR,
   error
 });
 

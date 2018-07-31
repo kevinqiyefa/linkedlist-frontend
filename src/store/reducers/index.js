@@ -1,9 +1,13 @@
 import { combineReducers } from 'redux';
-import user from './user';
+import auth from './auth';
+import currentUser from './currentUser';
 import errors from './errors';
+import jobs from './jobs';
 
 const rootReducer = combineReducers({
-  user,
+  auth,
+  currentUser,
+  jobs,
   errors
 });
 
