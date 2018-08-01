@@ -21,6 +21,10 @@
   margin: 0 1.5rem;
 }
 
+.Header-logo:hover {
+  background-color: #48a999;
+}
+
 .search-form {
   flex: 1;
   display: flex;
@@ -75,6 +79,7 @@
 
 .search-btn:hover {
   cursor: pointer;
+  background-color: #48a999;
 }
 
 .search-btn:active,
