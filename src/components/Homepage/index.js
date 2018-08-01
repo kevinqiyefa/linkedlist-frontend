@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Header from '../Header';
+import Card from '../Card';
+import ProtectedRoute from '../../containers/ProtectedRoute';
+import { Switch, Link } from 'react-router-dom';
+import Profile from '.';
 import './style.css';
 
 export default class Homepage extends Component {
@@ -18,20 +22,17 @@ export default class Homepage extends Component {
     } else {
       displayJobs = this.props.jobs.map(job => (
         <div key={job.id}>
-          <li>
-            {job.title} @{job.company}
-          </li>
-          <li>
-            {job.salary} | {job.equity}
-          </li>
+          <Card type={'jobs'} data={job} />
         </div>
       ));
     }
 
     return (
       <div>
-        <Header />
+        <Header displayName={'Kevin Qi'} />
+
         <div className="feed">
+          <Link to="/profile"> GO TO PROFILE </Link>
           <h1>Jobs</h1>
           {displayJobs}
         </div>
@@ -41,5 +42,6 @@ export default class Homepage extends Component {
 }
 
 Homepage.propTypes = {
-  currentUser: PropTypes.object
+  currentUser: PropTypes.object,
+  jobs: PropTypes.arrayOf(PropTypes.object)
 };

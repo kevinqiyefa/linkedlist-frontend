@@ -1,0 +1,31 @@
+.Card {
+  background-color: white;
+  height: 5.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin: 0.8em;
+  padding: 1.2em 2.4em;
+  padding-left: 0.8em;
+  width: 75vw;
+  max-width: 800px;
+  list-style-type: none;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.Card-img {
+  height: 100%;
+  margin-left: 0;
+  margin-right: 2.5em;
+  padding-left: 0;
+}
+
+.applyButton {
+  background-color: #00695c;
+  color: white;
+  font-size: 0.875rem;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 5px;
+}
