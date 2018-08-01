@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Header from '../Header';
+import './style.css';
 
 export default class Homepage extends Component {
   componentDidMount() {
@@ -16,15 +17,24 @@ export default class Homepage extends Component {
       );
     } else {
       displayJobs = this.props.jobs.map(job => (
-        <li key={job.id}>{job.title}</li>
+        <div key={job.id}>
+          <li>
+            {job.title} @{job.company}
+          </li>
+          <li>
+            {job.salary} | {job.equity}
+          </li>
+        </div>
       ));
     }
 
     return (
       <div>
         <Header />
-        <h1>Jobs</h1>
-        {displayJobs}
+        <div className="feed">
+          <h1>Jobs</h1>
+          {displayJobs}
+        </div>
       </div>
     );
   }
