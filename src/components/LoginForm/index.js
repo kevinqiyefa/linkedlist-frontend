@@ -13,12 +13,21 @@ export default class LoginForm extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleSubmit = e => {
+  handleSubmit = async e => {
     e.preventDefault();
     let userCredentials = { ...this.state };
     // call redux
-    console.log(userCredentials);
-    this.setState(DEFAULT_STATE);
+    try {
+      await this.props.authRequest(
+        'user',
+        userCredentials.username,
+        userCredentials.password
+      );
+      this.setState(DEFAULT_STATE);
+      this.props.history.push('/');
+    } catch (error) {
+      return;
+    }
   };
 
   render() {
