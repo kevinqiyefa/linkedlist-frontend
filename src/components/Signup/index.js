@@ -11,7 +11,7 @@ const DEFAULT_STATE = {
   current_company: ''
 };
 
-export default class LoginForm extends Component {
+export default class Signup extends Component {
   state = DEFAULT_STATE;
 
   handleChange = e => {

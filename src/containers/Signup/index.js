@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
-import SignupForm from '../../components/SignupForm';
+import Signup from '../../components/Signup';
 import { setError, clearError } from '../../store/actions/error';
 
 export default connect(
   null,
   { setError, clearError }
-)(SignupForm);
+)(Signup);
