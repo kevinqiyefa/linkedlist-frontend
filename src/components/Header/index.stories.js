@@ -1,16 +1,24 @@
 import React from 'react';
-
+import { MemoryRouter } from 'react-router';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
-import { linkTo } from '@storybook/addon-links';
 
 import Header from '.';
 
 storiesOf('Header', module)
   .addDecorator(story => (
-    <div style={{ backgroundColor: 'darkgray', padding: '50px' }}>
-      {story()}
-    </div>
+    <MemoryRouter initialEntries={['/']}>{story()}</MemoryRouter>
   ))
-  .add('default', () => <Header />)
-  .add('with alternate props', () => <Header cool />);
+  .add('default', () => (
+    <Header
+      displayName="hueter"
+      profilePic="https://avatars0.githubusercontent.com/u/13444851"
+      type="user"
+    />
+  ))
+  .add('with alternate props', () => (
+    <Header
+      displayName="hooli"
+      profilePic="https://botw-pd.s3.amazonaws.com/styles/logo-thumbnail/s3/032018/untitled-1_402.png"
+      type="company"
+    />
+  ));
