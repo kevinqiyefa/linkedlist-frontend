@@ -12,6 +12,7 @@
 
 1.  `npm install` to get the dependencies
 1.  `npm start` to start webpack on port `3001`
+1.  Simultaneously, you must run the backend server (feel free to use your own or [Rithm School's version](https://github.com/rithmschool/LinkedList/tree/master/solution/backend)) on port 3000, or change the `API_URL` in `services/api/index.js` to reference the appropriate backend URL.
 
 ## App Structure
 
