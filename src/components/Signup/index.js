@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import LinkedListLogo from '../../images/LinkedList_logo.png';
 import { Link } from 'react-router-dom';
+import './style.css';
 
 const DEFAULT_STATE = {
   username: '',
@@ -18,78 +20,121 @@ export default class Signup extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleSubmit = e => {
+  handleSubmit = async e => {
     e.preventDefault();
+    this.props.clearError();
     let newUser = { ...this.state };
-    // call redux
-    console.log(newUser);
-    this.setState(DEFAULT_STATE);
+    for (let field in newUser) {
+      if (!newUser[field]) {
+        delete newUser[field];
+      }
+    }
+    try {
+      // call redux
+      await this.props.createUserRequest(newUser);
+      await this.props.authRequest('user', newUser.username, newUser.password);
+      this.props.history.push('/');
+    } catch (error) {
+      return;
+    }
   };
 
   render() {
+    const { error } = this.props;
+    let displayError;
+    if (error.hasError) {
+      displayError = (
+        <div className="error-message">
+          <h3>{this.props.error.title}</h3>
+          <p>{this.props.error.message}</p>
+        </div>
+      );
+    }
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            name="username"
-            onChange={this.handleChange}
-            value={this.state.username}
-          />
+      <div className="signup-container">
+        <img src={LinkedListLogo} alt="LinkedList" />
+        <div className="signup-form-container">
+          <h2>New User Form</h2>
+          {displayError}
+          <form onSubmit={this.handleSubmit}>
+            <li className="signup-form-row">
+              <label htmlFor="username">Username</label>
+              <input
+                type="text"
+                name="username"
+                onChange={this.handleChange}
+                value={this.state.username}
+              />
+            </li>
 
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            onChange={this.handleChange}
-            value={this.state.password}
-          />
+            <li className="signup-form-row">
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                name="password"
+                onChange={this.handleChange}
+                value={this.state.password}
+              />
+            </li>
 
-          <label htmlFor="first_name">First Name</label>
-          <input
-            type="text"
-            name="first_name"
-            onChange={this.handleChange}
-            value={this.state.first_name}
-          />
+            <li className="signup-form-row">
+              <label htmlFor="first_name">First Name</label>
+              <input
+                type="text"
+                name="first_name"
+                onChange={this.handleChange}
+                value={this.state.first_name}
+              />
+            </li>
 
-          <label htmlFor="last_name">Last Name</label>
-          <input
-            type="text"
-            name="last_name"
-            onChange={this.handleChange}
-            value={this.state.last_name}
-          />
+            <li className="signup-form-row">
+              <label htmlFor="last_name">Last Name</label>
+              <input
+                type="text"
+                name="last_name"
+                onChange={this.handleChange}
+                value={this.state.last_name}
+              />
+            </li>
 
-          <label htmlFor="email">Email Address</label>
-          <input
-            type="text"
-            name="email"
-            onChange={this.handleChange}
-            value={this.state.email}
-          />
+            <li className="signup-form-row">
+              <label htmlFor="email">Email Address</label>
+              <input
+                type="text"
+                name="email"
+                onChange={this.handleChange}
+                value={this.state.email}
+              />
+            </li>
 
-          <label htmlFor="photo">Photo</label>
-          <input
-            type="text"
-            name="photo"
-            onChange={this.handleChange}
-            value={this.state.photo}
-          />
+            <li className="signup-form-row">
+              <label htmlFor="photo">Photo</label>
+              <input
+                type="text"
+                name="photo"
+                onChange={this.handleChange}
+                value={this.state.photo}
+              />
+            </li>
 
-          <label htmlFor="current_company">Current Company</label>
-          <input
-            type="text"
-            name="current_company"
-            onChange={this.handleChange}
-            value={this.state.current_company}
-          />
+            <li className="signup-form-row">
+              <label htmlFor="current_company">Current Company</label>
+              <input
+                type="text"
+                name="current_company"
+                onChange={this.handleChange}
+                value={this.state.current_company}
+              />
+            </li>
 
-          <button type="submit">Sign Up</button>
-        </form>
-        <span>Already have an account?</span>
-        <Link to="/login">Click Here to Login</Link>
+            <li className="signup-form-row">
+              <button type="submit">Sign Up</button>
+            </li>
+          </form>
+          <div className="login-link">
+            <Link to="/login">Click Here if You Have an Account Already</Link>
+          </div>
+        </div>
       </div>
     );
   }

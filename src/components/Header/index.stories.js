@@ -8,14 +8,14 @@ storiesOf('Header', module)
   .addDecorator(story => (
     <MemoryRouter initialEntries={['/']}>{story()}</MemoryRouter>
   ))
-  .add('default', () => (
+  .add('with user props', () => (
     <Header
       displayName="hueter"
       profilePic="https://avatars0.githubusercontent.com/u/13444851"
       type="user"
     />
   ))
-  .add('with alternate props', () => (
+  .add('with company props', () => (
     <Header
       displayName="hooli"
       profilePic="https://botw-pd.s3.amazonaws.com/styles/logo-thumbnail/s3/032018/untitled-1_402.png"
