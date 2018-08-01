@@ -36,7 +36,7 @@ One of the first things you will notice is that everything is basically in its o
 
 Remember that the name `index.js` is special. You can reference a component in `RandomThing/index.js` just as `import RandomThing from './RandomThing`; in other words you don't have to reference the filename at all, just the folder name.
 
-## Using Storybook
+## Using Storybook (Optional but Fun)
 
 When developing on larger apps, it can be really annoying to mess with the CSS and constantly have to navigate back to a component, or login/logout just to see changes.
 
