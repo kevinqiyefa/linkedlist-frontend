@@ -13,6 +13,13 @@ export default function authReducer(state = DEFAULT_STATE, action) {
         isAuthenticated: true,
         type: 'user'
       };
+    case t.USER_TOKEN_FOUND:
+      return {
+        ...state,
+        isAuthenticated: true,
+        type: 'user'
+      };
+    case t.NO_TOKEN_FOUND:
     default:
       return state;
   }

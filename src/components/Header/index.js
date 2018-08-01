@@ -50,7 +50,7 @@ export default class Header extends Component {
                   type="radio"
                   id={category}
                   checked={i === searchCategoryIdx}
-                  onChange={this.handleClick.bind(this, i)}
+                  onChange={() => this.handleClick(i)}
                 />
                 <label htmlFor={category}>{category}</label>
               </div>

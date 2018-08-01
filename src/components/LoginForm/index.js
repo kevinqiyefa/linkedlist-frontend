@@ -23,7 +23,6 @@ export default class LoginForm extends Component {
         userCredentials.username,
         userCredentials.password
       );
-      this.setState(DEFAULT_STATE);
       this.props.history.push('/');
     } catch (error) {
       return;
