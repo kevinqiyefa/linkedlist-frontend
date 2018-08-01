@@ -1,6 +1,6 @@
 import * as t from '../../actions/actionTypes';
 
-const DEFAULT_STATE = { hasError: false, message: '', details: '' };
+const DEFAULT_STATE = { hasError: false, title: '', message: '' };
 
 export default function errorReducer(state = DEFAULT_STATE, action) {
   switch (action.type) {
@@ -8,38 +8,38 @@ export default function errorReducer(state = DEFAULT_STATE, action) {
       return {
         ...state,
         hasError: true,
-        message: action.error.message,
-        details: action.error.details || ''
+        title: 'Error',
+        message: action.error.message || ''
       };
     case t.CLEAR_ERROR:
-      return { ...state, hasError: false, message: '' };
+      return DEFAULT_STATE;
     case t.CREATE_USER_FAIL:
       return {
         ...state,
         hasError: true,
-        message: 'There was a problem signing up.',
-        details: action.error.message
+        title: 'There was a problem signing up.',
+        message: action.error.message
       };
     case t.USER_AUTH_FAIL:
       return {
         ...state,
         hasError: true,
-        message: 'There was a problem logging in.',
-        details: action.error.message
+        title: 'There was a problem logging in.',
+        message: action.error.message
       };
     case t.FETCH_USER_FAIL:
       return {
         ...state,
         hasError: true,
-        message: 'There was a problem loading this user profile.',
-        details: action.error.message
+        title: 'There was a problem loading this user profile.',
+        message: action.error.message
       };
     case t.FETCH_JOBS_FAIL:
       return {
         ...state,
         hasError: true,
-        message: 'Unable to load jobs.',
-        details: action.error.message
+        title: 'Unable to load jobs.',
+        message: action.error.message
       };
     default:
       return state;

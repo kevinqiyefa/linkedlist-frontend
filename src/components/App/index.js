@@ -4,6 +4,7 @@ import { configureStore } from '../../store';
 import { stayLoggedIn } from '../../store/actions/auth';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Main from '../Main';
+import './style.css';
 
 const store = configureStore();
 

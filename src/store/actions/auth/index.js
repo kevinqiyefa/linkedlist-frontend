@@ -13,9 +13,10 @@ export function authRequest(type, usernameOrHandle, password) {
           username: usernameOrHandle,
           password
         });
-        return dispatch(authSuccess('user', token));
+        dispatch(authSuccess('user', token));
       } catch (error) {
-        return dispatch(authFail('user', error));
+        dispatch(authFail('user', error));
+        return Promise.reject();
       }
     } else if (type === 'company') {
       // login for companies --> not yet implemented

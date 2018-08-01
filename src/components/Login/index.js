@@ -17,6 +17,7 @@ export default class Login extends Component {
 
   handleSubmit = async e => {
     e.preventDefault();
+    this.props.clearError();
     let userCredentials = { ...this.state };
     // call redux
     try {
@@ -32,6 +33,16 @@ export default class Login extends Component {
   };
 
   render() {
+    let { error } = this.props;
+    let displayError;
+    if (error.hasError) {
+      displayError = (
+        <div className="error-message">
+          <h3>{this.props.error.title}</h3>
+          <p>{this.props.error.message}</p>
+        </div>
+      );
+    }
     return (
       <div className="login-container">
         <img src={LinkedListLogo} alt="LinkedList" />
@@ -40,6 +51,7 @@ export default class Login extends Component {
             Welcome to LinkedList, where you can totally like, land a sweet
             developer job or whatever.
           </h2>
+          {displayError}
           <form onSubmit={this.handleSubmit}>
             <li className="login-form-row">
               <label htmlFor="username">Username</label>

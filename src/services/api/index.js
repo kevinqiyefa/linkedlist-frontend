@@ -50,17 +50,6 @@ export async function callAPI(method, path, authRequired, payload) {
     // no need to reference the .data object when using this method
     return response.data;
   } catch (err) {
-    let processedError = parseAPIError(err);
-    return Promise.reject(processedError);
-  }
-}
-
-export function parseAPIError(error) {
-  if (error.response && error.response.data) {
-    // if it's coming from the API itself
-    return error.response.data.message;
-  } else {
-    // if it's an internal code error
-    return error.message;
+    return Promise.reject(err.response.data.error);
   }
 }
