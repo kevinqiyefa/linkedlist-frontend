@@ -68,5 +68,5 @@ export default class Header extends Component {
 }
 
 Header.defaultProps = {
-  searchCategories: ['companies', 'users', 'jobs']
+  searchCategories: ['companies', 'jobs', 'people']
 };
