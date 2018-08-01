@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import UserProfilePlaceholder from '../../images/user_placeholder.png';
 import './style.css';
 
 const DEFAULT_STATE = {
@@ -68,5 +69,6 @@ export default class Header extends Component {
 }
 
 Header.defaultProps = {
-  searchCategories: ['companies', 'jobs', 'people']
+  searchCategories: ['companies', 'jobs', 'people'],
+  profilePic: UserProfilePlaceholder
 };
