@@ -28,7 +28,7 @@ export async function callAPI(method, path, authRequired, payload) {
   // set up headers specifically for this request
   const requestHeaders = {};
   if (authRequired) {
-    requestHeaders.Authorization = `Bearer ${getToken()}`;
+    requestHeaders.Authorization = `${getToken()}`;
   }
 
   try {
