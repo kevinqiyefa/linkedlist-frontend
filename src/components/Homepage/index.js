@@ -5,6 +5,7 @@ import Card from '../Card';
 import ProtectedRoute from '../../containers/ProtectedRoute';
 import { Switch, Link } from 'react-router-dom';
 import Profile from '.';
+import { titleCase } from '../../services/name';
 import './style.css';
 
 export default class Homepage extends Component {
@@ -34,16 +35,15 @@ export default class Homepage extends Component {
         </div>
       ));
     }
-    const name = () => {
-      return (
-        this.props.currentUser.first_name[0].toUpperCase() +
-        this.props.currentUser.first_name.slice(1)
-      );
-    };
 
     return (
       <div>
-        <Header displayName={name()} />
+        <Header
+          displayName={titleCase(
+            this.props.currentUser.first_name,
+            this.props.currentUser.last_name
+          )}
+        />
         {/* {this.props.currentUser} */}
 
         <div className="feed">
