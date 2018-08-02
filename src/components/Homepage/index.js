@@ -3,14 +3,8 @@ import PropTypes from 'prop-types';
 import Header from '../../containers/Header';
 import Card from '../Card';
 import ProtectedRoute from '../../containers/ProtectedRoute';
-<<<<<<< HEAD
-import { Switch, Link } from 'react-router-dom';
-import Profile from '.';
-import { titleCase } from '../../services/name';
-=======
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Profile from '../../containers/Profile';
->>>>>>> day2
 import './style.css';
 import HomeContent from '../HomeContent';
 import { getToken } from '../../services/token';
@@ -48,18 +42,9 @@ export default class Homepage extends Component {
     return (
       <div>
         <Header
-<<<<<<< HEAD
-          displayName={titleCase(
-            this.props.currentUser.first_name,
-            this.props.currentUser.last_name
-          )}
-        />
-        {/* {this.props.currentUser} */}
-=======
           displayName={this.props.currentUser.first_name}
           history={this.props.history}
         />
->>>>>>> day2
 
         {this.state.loading ? (
           <h1>Loading...</h1>
