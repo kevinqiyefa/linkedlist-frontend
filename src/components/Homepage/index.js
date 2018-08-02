@@ -6,7 +6,7 @@ import ProtectedRoute from '../../containers/ProtectedRoute';
 import { Switch } from 'react-router-dom';
 import Profile from '../../containers/Profile';
 import './style.css';
-import HomeCentent from '../HomeContent';
+import HomeContent from '../HomeContent';
 
 export default class Homepage extends Component {
   state = { loading: true };
@@ -45,7 +45,7 @@ export default class Homepage extends Component {
               exact
               path="/"
               component={() => (
-                <HomeCentent
+                <HomeContent
                   content={displayJobs}
                   isLoading={this.state.loading}
                 />

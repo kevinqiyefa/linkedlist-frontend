@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './style.css';
-class HomeCentent extends Component {
+class HomeContent extends Component {
   render() {
     return (
       <div>
@@ -16,7 +16,7 @@ class HomeCentent extends Component {
   }
 }
 
-HomeCentent.propTypes = {
+HomeContent.propTypes = {
   currentUser: PropTypes.object
 };
-export default HomeCentent;
+export default HomeContent;
