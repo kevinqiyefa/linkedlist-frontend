@@ -20,7 +20,15 @@
   margin-right: 2.5em;
   padding-left: 0;
 }
-
+.Card-img-details {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.Card-img-details > img {
+  height: 115%;
+}
 .applyButton {
   background-color: #00695c;
   color: white;

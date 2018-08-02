@@ -10,8 +10,9 @@ class Card extends Component {
     if (this.props.type === 'jobs') {
       cardDisplay = (
         <div className="Card">
-          <img className="Card-img" src={image} alt="company image" />
-          <div>
+          <div className="Card-img-details">
+            <img className="Card-img" src={image} alt="company image" />
+
             <p>
               {job.title}{' '}
               <Link to="#">
