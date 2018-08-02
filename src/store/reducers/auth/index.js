@@ -19,6 +19,9 @@ export default function authReducer(state = DEFAULT_STATE, action) {
         isAuthenticated: true,
         type: 'user'
       };
+    case t.LOGOUT:
+      return DEFAULT_STATE;
+
     case t.NO_TOKEN_FOUND:
     default:
       return state;

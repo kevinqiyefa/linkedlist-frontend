@@ -41,6 +41,20 @@ export default function errorReducer(state = DEFAULT_STATE, action) {
         title: 'Unable to load jobs.',
         message: action.error.message
       };
+    case t.FETCH_USER_SEARCH_FAIL:
+      return {
+        ...state,
+        hasError: true,
+        title: 'Unable to load users.',
+        message: action.error.message
+      };
+    case t.FETCH_COMPANY_SEARCH_FAIL:
+      return {
+        ...state,
+        hasError: true,
+        title: 'Unable to load companies.',
+        message: action.error.message
+      };
     default:
       return state;
   }

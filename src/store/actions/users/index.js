@@ -35,7 +35,6 @@ export function fetchCurrentUser() {
   return async dispatch => {
     try {
       dispatch({ type: t.FETCH_CURRENT_USER_REQUEST });
-      console.log('here we are?');
       let token = getToken();
       let decoded = jwtDecode(token);
       let currentUser = await callAPI(
@@ -43,6 +42,9 @@ export function fetchCurrentUser() {
         `/users/${decoded.username}`,
         true
       );
+      currentUser.first_name =
+        currentUser.first_name[0].toUpperCase() +
+        currentUser.first_name.slice(1).toLowerCase();
       dispatch(fetchCurrentUserSuccess(currentUser));
     } catch (error) {
       dispatch(fetchCurrentUserFail(error));

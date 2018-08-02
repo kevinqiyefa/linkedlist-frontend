@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import UserProfilePlaceholder from '../../images/user_placeholder.png';
 import './style.css';
+import { Redirect } from 'react-router-dom';
 
 const DEFAULT_STATE = {
   searchText: '',
   searchCategoryIdx: 0,
-  isDropdownVisible: false
+  isDropdownVisible: false,
+  isSearching: false
 };
 
 export default class Header extends Component {
@@ -15,7 +17,21 @@ export default class Header extends Component {
 
   handleSearch = e => {
     e.preventDefault();
-    // TODO: search
+    if (this.state.searchText) {
+      this.setState({ isSearching: true });
+      if (this.state.searchCategoryIdx === 2) {
+        this.props.searchForUsers(this.state.searchText);
+      } else if (this.state.searchCategoryIdx === 1) {
+        // search for jobs
+      } else if (this.state.searchCategoryIdx === 0) {
+        this.props.searchForCompanies(this.state.searchText);
+      }
+    }
+  };
+
+  handleLogout = () => {
+    this.props.logout();
+    this.props.history.push('/login');
   };
 
   handleChange = e => {
@@ -29,6 +45,11 @@ export default class Header extends Component {
   render() {
     const { searchText, searchCategoryIdx } = this.state;
     const { searchCategories, displayName, profilePic } = this.props;
+
+    if (this.state.isSearching) {
+      return <Redirect to="/results" />;
+    }
+
     return (
       <div className="Header">
         <Link to="/" className="Header-logo">
@@ -60,6 +81,7 @@ export default class Header extends Component {
           </div>
           <input type="submit" value="Search" className="search-btn" />
         </form>
+
         <div className="profile-area">
           <div className="dropdown">
             <img src={profilePic} alt="Profile" />
@@ -70,7 +92,7 @@ export default class Header extends Component {
             {/* <button class="dropbtn">Dropdown</button> */}
             <div className="dropdown-content">
               <Link to="/profile">Profile</Link>
-              <Link to="/logout">Logout</Link>
+              <a onClick={this.handleLogout}>Logout</a>
             </div>
           </div>
         </div>
@@ -88,5 +110,6 @@ Header.propTypes = {
   searchCategories: PropTypes.array,
   profilePic: PropTypes.string,
   displayName: PropTypes.string,
-  currentUser: PropTypes.object
+  currentUser: PropTypes.object,
+  logout: PropTypes.func
 };
