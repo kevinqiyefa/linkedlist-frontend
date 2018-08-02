@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Header from '../Header';
+import Header from '../../containers/Header';
 import Card from '../Card';
 import ProtectedRoute from '../../containers/ProtectedRoute';
 import { Switch } from 'react-router-dom';

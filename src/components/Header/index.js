@@ -15,7 +15,11 @@ export default class Header extends Component {
 
   handleSearch = e => {
     e.preventDefault();
-    // TODO: search
+    if (this.state.searchText) {
+      console.log(this.props);
+
+      this.props.searchForUsers(this.state.searchText);
+    }
   };
 
   handleChange = e => {
