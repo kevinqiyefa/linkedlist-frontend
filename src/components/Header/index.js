@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import UserProfilePlaceholder from '../../images/user_placeholder.png';
 import './style.css';
+import { Redirect } from 'react-router-dom';
 
 const DEFAULT_STATE = {
   searchText: '',
   searchCategoryIdx: 0,
-  isDropdownVisible: false
+  isDropdownVisible: false,
+  isSearching: false
 };
 
 export default class Header extends Component {
@@ -16,9 +18,8 @@ export default class Header extends Component {
   handleSearch = e => {
     e.preventDefault();
     if (this.state.searchText) {
-      console.log(this.props);
-
       this.props.searchForUsers(this.state.searchText);
+      this.setState({ isSearching: true });
     }
   };
 
@@ -33,6 +34,11 @@ export default class Header extends Component {
   render() {
     const { searchText, searchCategoryIdx } = this.state;
     const { searchCategories, displayName, profilePic } = this.props;
+
+    if (this.state.isSearching) {
+      return <Redirect to="/results" />;
+    }
+
     return (
       <div className="Header">
         <Link to="/" className="Header-logo">

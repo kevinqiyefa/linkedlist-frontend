@@ -7,6 +7,7 @@ import { Switch } from 'react-router-dom';
 import Profile from '../../containers/Profile';
 import './style.css';
 import HomeContent from '../HomeContent';
+import Results from '../../containers/Results';
 
 export default class Homepage extends Component {
   state = { loading: true };
@@ -52,6 +53,7 @@ export default class Homepage extends Component {
               )}
             />
             <ProtectedRoute exact path="/profile" component={Profile} />
+            <ProtectedRoute exact path="/results" component={Results} />
           </Switch>
         )}
       </div>

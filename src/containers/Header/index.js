@@ -6,7 +6,7 @@ import { logout } from '../../store/actions/auth';
 function mapStateToProps(reduxState) {
   return {
     currentUser: reduxState.currentUser,
-    results: reduxState.results
+    search: reduxState.search
   };
 }
 
