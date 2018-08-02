@@ -18,15 +18,21 @@ export default class Header extends Component {
   handleSearch = e => {
     e.preventDefault();
     if (this.state.searchText) {
+      this.setState({ isSearching: true });
       if (this.state.searchCategoryIdx === 2) {
         this.props.searchForUsers(this.state.searchText);
-        this.setState({ isSearching: true });
       } else if (this.state.searchCategoryIdx === 1) {
-        // this.props.searchForJobs...
+        // search for jobs
       } else if (this.state.searchCategoryIdx === 0) {
-        // this.props.searchForCompanies
+        debugger;
+        this.props.searchForCompanies(this.state.searchText);
       }
     }
+  };
+
+  handleLogout = () => {
+    this.props.logout();
+    this.props.history.push('/login');
   };
 
   handleChange = e => {
@@ -87,16 +93,7 @@ export default class Header extends Component {
             {/* <button class="dropbtn">Dropdown</button> */}
             <div className="dropdown-content">
               <Link to="/profile">Profile</Link>
-              <Link
-                onClick={() => {
-                  this.props.logout();
-                  this.setState({
-                    loggedOut: true
-                  });
-                }}
-              >
-                Logout
-              </Link>
+              <a onClick={this.handleLogout}>Logout</a>
             </div>
           </div>
         </div>
@@ -114,5 +111,6 @@ Header.propTypes = {
   searchCategories: PropTypes.array,
   profilePic: PropTypes.string,
   displayName: PropTypes.string,
-  currentUser: PropTypes.object
+  currentUser: PropTypes.object,
+  logout: PropTypes.func
 };

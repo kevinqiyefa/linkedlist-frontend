@@ -60,6 +60,30 @@ class Card extends Component {
       }
     }
 
+    if (this.props.type === 'company-results') {
+      if (this.props.company) {
+        const company = this.props.company;
+        const imgURL = company.photo ? company.photo : imageurl;
+        cardDisplay = (
+          <div className="Card">
+            <div className="img-job-info">
+              <img className="Card-img" src={imgURL} alt="company-img" />
+              <div className="job-info">
+                <p id="company-result-info">{company.name}</p>
+
+                <Link to="#">
+                  <strong>{company.name}</strong>
+                </Link>
+                <p>Email: {company.email}</p>
+              </div>
+            </div>
+          </div>
+        );
+      } else {
+        cardDisplay = <h2>No Results</h2>;
+      }
+    }
+
     return <div>{cardDisplay}</div>;
   }
 }

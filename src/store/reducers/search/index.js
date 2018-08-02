@@ -15,6 +15,13 @@ export default function search(state = DEFAULT_STATE, action) {
         companiesResults: [],
         jobsResults: []
       };
+    case t.FETCH_COMPANY_SEARCH_SUCCESS:
+      return {
+        ...state,
+        companiesResults: action.results,
+        userResults: [],
+        jobsResults: []
+      };
     default:
       return state;
   }

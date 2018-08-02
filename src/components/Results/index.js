@@ -12,7 +12,9 @@ class Results extends Component {
         <Card type="user-results" user={user} key={uuid()} />
       ));
     } else if (this.props.search.companiesResults.length) {
-      // blahblah
+      results = this.props.search.companiesResults.map(company => (
+        <Card type="company-results" company={company} key={uuid()} />
+      ));
     } else if (this.props.search.jobsResults.length) {
       // blah blah blah
     } else {

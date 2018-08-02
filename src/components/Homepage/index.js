@@ -7,10 +7,11 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import Profile from '../../containers/Profile';
 import './style.css';
 import HomeContent from '../HomeContent';
+import { getToken } from '../../services/token';
 import Results from '../../containers/Results';
 
 export default class Homepage extends Component {
-  state = { loading: true };
+  state = { loading: true, redirect: false };
 
   async componentDidMount() {
     await this.props.fetchCurrentUser();
@@ -20,6 +21,10 @@ export default class Homepage extends Component {
 
   render() {
     const { jobs } = this.props;
+
+    if (this.state.redirect) {
+      return <Redirect to="/login" />;
+    }
 
     let displayJobs;
     if (jobs.length === 0) {
@@ -36,7 +41,10 @@ export default class Homepage extends Component {
 
     return (
       <div>
-        <Header displayName={this.props.currentUser.first_name} />
+        <Header
+          displayName={this.props.currentUser.first_name}
+          history={this.props.history}
+        />
 
         {this.state.loading ? (
           <h1>Loading...</h1>
@@ -54,13 +62,6 @@ export default class Homepage extends Component {
             />
             <ProtectedRoute exact path="/profile" component={Profile} />
             <ProtectedRoute exact path="/results" component={Results} />
-            <Route
-              exact
-              path="/logout"
-              component={() => {
-                <Redirect to="/login" />;
-              }}
-            />
           </Switch>
         )}
       </div>

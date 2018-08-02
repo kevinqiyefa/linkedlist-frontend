@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Header from '../../components/Header';
-import { searchForUsers } from '../../store/actions/search';
+import { searchForUsers, searchForCompanies } from '../../store/actions/search';
 import { logout } from '../../store/actions/auth';
 
 function mapStateToProps(reduxState) {
@@ -12,5 +12,5 @@ function mapStateToProps(reduxState) {
 
 export default connect(
   mapStateToProps,
-  { logout, searchForUsers }
+  { logout, searchForUsers, searchForCompanies }
 )(Header);
