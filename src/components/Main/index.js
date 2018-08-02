@@ -5,7 +5,7 @@ import Signup from '../../containers/Signup';
 import Homepage from '../../containers/Homepage';
 import NoAuthRoute from '../../containers/NoAuthRoute';
 import ProtectedRoute from '../../containers/ProtectedRoute';
-import Profile from '../Profile';
+import Profile from '../../containers/Profile';
 
 export default class Main extends Component {
   render() {

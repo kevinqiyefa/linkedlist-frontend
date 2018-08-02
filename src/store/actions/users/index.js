@@ -1,5 +1,7 @@
 import { callAPI } from '../../../services/api';
 import * as t from '../actionTypes';
+import jwtDecode from 'jwt-decode';
+import { getToken } from '../../../services/token';
 
 export function createUserRequest(newUserPayload) {
   return async dispatch => {
@@ -27,4 +29,32 @@ function createUserFail(error) {
     type: t.CREATE_USER_FAIL,
     error
   };
+}
+
+export function fetchCurrentUser() {
+  return async dispatch => {
+    try {
+      dispatch({ type: t.FETCH_CURRENT_USER_REQUEST });
+      console.log('here we are?');
+      let token = getToken();
+      let decoded = jwtDecode(token);
+      let currentUser = await callAPI(
+        'GET',
+        `/users/${decoded.username}`,
+        true
+      );
+      dispatch(fetchCurrentUserSuccess(currentUser));
+    } catch (error) {
+      dispatch(fetchCurrentUserFail(error));
+      return Promise.reject();
+    }
+  };
+}
+
+export function fetchCurrentUserSuccess(user) {
+  return { type: t.FETCH_CURRENT_USER_SUCCESS, user };
+}
+
+export function fetchCurrentUserFail(error) {
+  return { type: t.FETCH_CURRENT_USER_FAIL, error };
 }

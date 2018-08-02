@@ -61,14 +61,14 @@ export default class Header extends Component {
           <input type="submit" value="Search" className="search-btn" />
         </form>
         <div className="profile-area">
-          <div class="dropdown">
+          <div className="dropdown">
             <img src={profilePic} alt="Profile" />
 
             <div>
               <span>{displayName}</span>
             </div>
             {/* <button class="dropbtn">Dropdown</button> */}
-            <div class="dropdown-content">
+            <div className="dropdown-content">
               <Link to="/profile">Profile</Link>
               <Link to="/logout">Logout</Link>
             </div>

@@ -8,12 +8,20 @@ import Profile from '.';
 import './style.css';
 
 export default class Homepage extends Component {
-  componentDidMount() {
-    this.props.fetchJobsRequest();
+  state = { loading: true };
+
+  async componentDidMount() {
+    await this.props.fetchCurrentUser();
+    await this.props.fetchJobsRequest();
+    this.setState({ loading: false });
   }
 
   render() {
     const { jobs } = this.props;
+
+    if (this.state.loading) {
+      return <h1>Loading...</h1>;
+    }
     let displayJobs;
     if (jobs.length === 0) {
       displayJobs = (
@@ -26,13 +34,19 @@ export default class Homepage extends Component {
         </div>
       ));
     }
+    const name = () => {
+      return (
+        this.props.currentUser.first_name[0].toUpperCase() +
+        this.props.currentUser.first_name.slice(1)
+      );
+    };
 
     return (
       <div>
-        <Header displayName={'Kevin Qi'} />
+        <Header displayName={name()} />
+        {/* {this.props.currentUser} */}
 
         <div className="feed">
-          <Link to="/profile"> GO TO PROFILE </Link>
           <h1>Jobs</h1>
           {displayJobs}
         </div>

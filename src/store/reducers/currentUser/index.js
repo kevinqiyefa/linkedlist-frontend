@@ -1,7 +1,7 @@
 import * as t from '../../actions/actionTypes';
 
 const DEFAULT_STATE = {
-  username: '',
+  username: 'jason',
   password: '',
   first_name: '',
   last_name: '',

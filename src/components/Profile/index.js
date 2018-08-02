@@ -8,7 +8,7 @@ class Profile extends Component {
     return (
       <div>
         <Header displayName={'Kevin Qi'} />
-        <div>profile</div>
+        <div>{this.props.currentUser.firstName}</div>
       </div>
     );
   }
