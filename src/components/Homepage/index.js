@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Header from '../../containers/Header';
 import Card from '../Card';
 import ProtectedRoute from '../../containers/ProtectedRoute';
-import { Switch } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Profile from '../../containers/Profile';
 import './style.css';
 import HomeContent from '../HomeContent';
@@ -54,6 +54,13 @@ export default class Homepage extends Component {
             />
             <ProtectedRoute exact path="/profile" component={Profile} />
             <ProtectedRoute exact path="/results" component={Results} />
+            <Route
+              exact
+              path="/logout"
+              component={() => {
+                <Redirect to="/login" />;
+              }}
+            />
           </Switch>
         )}
       </div>

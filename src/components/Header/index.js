@@ -18,8 +18,14 @@ export default class Header extends Component {
   handleSearch = e => {
     e.preventDefault();
     if (this.state.searchText) {
-      this.props.searchForUsers(this.state.searchText);
-      this.setState({ isSearching: true });
+      if (this.state.searchCategoryIdx === 2) {
+        this.props.searchForUsers(this.state.searchText);
+        this.setState({ isSearching: true });
+      } else if (this.state.searchCategoryIdx === 1) {
+        // this.props.searchForJobs...
+      } else if (this.state.searchCategoryIdx === 0) {
+        // this.props.searchForCompanies
+      }
     }
   };
 
@@ -81,7 +87,16 @@ export default class Header extends Component {
             {/* <button class="dropbtn">Dropdown</button> */}
             <div className="dropdown-content">
               <Link to="/profile">Profile</Link>
-              <Link to="/logout">Logout</Link>
+              <Link
+                onClick={() => {
+                  this.props.logout();
+                  this.setState({
+                    loggedOut: true
+                  });
+                }}
+              >
+                Logout
+              </Link>
             </div>
           </div>
         </div>

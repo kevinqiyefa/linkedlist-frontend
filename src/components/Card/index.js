@@ -33,27 +33,31 @@ class Card extends Component {
     }
 
     if (this.props.type === 'user-results') {
-      const user = this.props.user;
-      const imgURL = user.photo ? user.photo : imageurl;
-      cardDisplay = (
-        <div className="Card">
-          <div className="img-job-info">
-            <img className="Card-img" src={imgURL} alt="user-img" />
-            <div className="job-info">
-              <p id="user-result-info">
-                {user.first_name} {user.last_name}
-              </p>
-              {user.current_company ? (
-                <Link to="#">
-                  <strong>@{user.current_company}</strong>
-                </Link>
-              ) : (
-                'Unemployed'
-              )}
+      if (this.props.user) {
+        const user = this.props.user;
+        const imgURL = user.photo ? user.photo : imageurl;
+        cardDisplay = (
+          <div className="Card">
+            <div className="img-job-info">
+              <img className="Card-img" src={imgURL} alt="user-img" />
+              <div className="job-info">
+                <p id="user-result-info">
+                  {user.first_name} {user.last_name}
+                </p>
+                {user.current_company ? (
+                  <Link to="#">
+                    <strong>@{user.current_company}</strong>
+                  </Link>
+                ) : (
+                  'Unemployed'
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      );
+        );
+      } else {
+        cardDisplay = <h2>No Results</h2>;
+      }
     }
 
     return <div>{cardDisplay}</div>;
