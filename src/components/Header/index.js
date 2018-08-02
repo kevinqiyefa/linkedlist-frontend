@@ -60,6 +60,7 @@ export default class Header extends Component {
           </div>
           <input type="submit" value="Search" className="search-btn" />
         </form>
+
         <div className="profile-area">
           <div className="dropdown">
             <img src={profilePic} alt="Profile" />

@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import Header from '../Header';
 import Card from '../Card';
 import ProtectedRoute from '../../containers/ProtectedRoute';
-import { Switch, Link } from 'react-router-dom';
-import Profile from '.';
+import { Switch } from 'react-router-dom';
+import Profile from '../../containers/Profile';
 import './style.css';
+import HomeCentent from '../HomeContent';
 
 export default class Homepage extends Component {
   state = { loading: true };
@@ -19,9 +20,6 @@ export default class Homepage extends Component {
   render() {
     const { jobs } = this.props;
 
-    if (this.state.loading) {
-      return <h1>Loading...</h1>;
-    }
     let displayJobs;
     if (jobs.length === 0) {
       displayJobs = (
@@ -34,22 +32,28 @@ export default class Homepage extends Component {
         </div>
       ));
     }
-    const name = () => {
-      return (
-        this.props.currentUser.first_name[0].toUpperCase() +
-        this.props.currentUser.first_name.slice(1)
-      );
-    };
 
     return (
       <div>
-        <Header displayName={name()} />
-        {/* {this.props.currentUser} */}
+        <Header displayName={this.props.currentUser.first_name} />
 
-        <div className="feed">
-          <h1>Jobs</h1>
-          {displayJobs}
-        </div>
+        {this.state.loading ? (
+          <h1>Loading...</h1>
+        ) : (
+          <Switch>
+            <ProtectedRoute
+              exact
+              path="/"
+              component={() => (
+                <HomeCentent
+                  content={displayJobs}
+                  isLoading={this.state.loading}
+                />
+              )}
+            />
+            <ProtectedRoute exact path="/profile" component={Profile} />
+          </Switch>
+        )}
       </div>
     );
   }

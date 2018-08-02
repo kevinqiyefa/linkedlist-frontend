@@ -10,21 +10,40 @@ class Card extends Component {
     if (this.props.type === 'jobs') {
       cardDisplay = (
         <div className="Card">
-          <img className="Card-img" src={image} alt="company image" />
-          <div>
-            <p>
-              {job.title}{' '}
-              <Link to="#">
-                <strong>@{job.company}</strong>
-              </Link>
-            </p>
+          <div className="img-job-info">
+            <img className="Card-img" src={image} alt="company-img" />
+            <div className="job-info">
+              <p id="company">
+                {job.title}{' '}
+                <Link to="#">
+                  <strong>@{job.company}</strong>
+                </Link>
+              </p>
 
-            <p>
-              {job.salary} | {job.equity}
-            </p>
+              <p id="sal-eq">
+                {job.salary} | {job.equity}
+              </p>
+            </div>
           </div>
           <button className="applyButton">Apply</button>
         </div>
+
+        // <div className="Card">
+        //   <div className="img-info">
+        //     <img className="Card-img" src={image} alt="company image" />
+        //     <span>
+        //       {job.title}{' '}
+        //       <Link to="#">
+        //         <strong>@{job.company}</strong>
+        //       </Link>
+        //     </span>
+
+        //     <span>
+        //       {job.salary} | {job.equity}
+        //     </span>
+        //   </div>
+        //   <button className="applyButton">Apply</button>
+        // </div>
       );
     }
 

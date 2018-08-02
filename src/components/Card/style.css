@@ -14,11 +14,26 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.img-job-info {
+  display: flex;
+  align-items: center;
+}
+.job-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .Card-img {
-  height: 100%;
-  margin-left: 0;
+  height: 6em;
+  width: 6em;
+  margin-left: 1em;
   margin-right: 2.5em;
   padding-left: 0;
+}
+
+#sal-eq {
+  margin-top: 0;
 }
 
 .applyButton {
@@ -26,6 +41,6 @@
   color: white;
   font-size: 0.875rem;
   border: none;
-  padding: 5px 12px;
+  padding: 0.5em 1.5em;
   border-radius: 5px;
 }
