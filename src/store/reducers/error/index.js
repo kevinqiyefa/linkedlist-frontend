@@ -62,6 +62,13 @@ export default function errorReducer(state = DEFAULT_STATE, action) {
         title: 'Unable to search jobs.',
         message: action.error.message
       };
+    case t.APPLY_JOB_FAIL:
+      return {
+        ...state,
+        hasError: true,
+        title: 'Unable to apply jobs.',
+        message: action.error.message
+      };
     default:
       return state;
   }

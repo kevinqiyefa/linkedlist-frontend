@@ -7,8 +7,15 @@ import userimageurl from '../../images/user_placeholder.png';
 import companyimageurl from '../../images/company_placeholder.png';
 
 class Card extends Component {
+  handleApply = () => {
+    // if (this.state.searchCategoryIdx === 2) {
+    //   this.props.searchForUsers(this.state.searchText);
+    // }
+  };
+
   render() {
     let cardDisplay;
+
     if (this.props.type === 'jobs') {
       const job = this.props.data;
       cardDisplay = (
@@ -28,7 +35,14 @@ class Card extends Component {
               </p>
             </div>
           </div>
-          <button className="applyButton">Apply</button>
+
+          {!this.props.currentUser.applied_to.includes(job.id) ? (
+            <button className="applyButton" onClick={this.handleApply}>
+              Apply
+            </button>
+          ) : (
+            <button className="appliedButton">Applied</button>
+          )}
         </div>
       );
     }

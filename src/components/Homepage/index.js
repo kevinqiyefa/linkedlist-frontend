@@ -33,7 +33,7 @@ export default class Homepage extends Component {
     } else {
       displayJobs = this.props.jobs.map(job => (
         <div key={job.id}>
-          <Card type={'jobs'} data={job} />
+          <Card type={'jobs'} data={job} currentUser={this.props.currentUser} />
         </div>
       ));
     }

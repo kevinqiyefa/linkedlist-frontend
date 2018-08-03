@@ -3,7 +3,8 @@ import Results from '../../components/Results';
 
 function mapStateToProps(reduxState) {
   return {
-    search: reduxState.search
+    search: reduxState.search,
+    currentUser: reduxState.currentUser
   };
 }
 

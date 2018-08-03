@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import UserProfilePlaceholder from '../../images/user_placeholder.png';
 import { Link } from 'react-router-dom';
+import uuid from 'uuid/v1';
 
 import './style.css';
 class Profile extends Component {
@@ -59,6 +60,10 @@ class Profile extends Component {
             <h2 className="applications-heading">
               <i className="material-icons ">&#xe85d;</i>Applications
             </h2>
+            <ul />
+            {user.applied_to.map(job => (
+              <li key={uuid()}>{`Job id: ${job}`}</li>
+            ))}
           </div>
         ) : (
           ''

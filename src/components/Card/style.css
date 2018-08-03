@@ -44,7 +44,8 @@
 }
 
 .applyButton,
-.viewButton {
+.viewButton,
+.appliedButton {
   background-color: #00695c;
   color: white;
   font-size: 0.875rem;
@@ -62,7 +63,12 @@
   margin-left: 2em;
 }
 
-.viewButton:hover {
+.viewButton:hover,
+.applyButton:hover {
   cursor: pointer;
   padding: 0.55em 1.55em;
+}
+
+.appliedButton {
+  background-color: rgb(49, 115, 190);
 }
