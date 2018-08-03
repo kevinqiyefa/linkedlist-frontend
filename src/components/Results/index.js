@@ -26,7 +26,9 @@ class Results extends Component {
     return (
       <div className="feed">
         <h2 className="result-heading">
-          <i className="material-icons">search</i>Search Results
+          <strong>
+            <i className="material-icons">search</i>
+          </strong>Search Results
         </h2>
         <div>{results}</div>
       </div>

@@ -84,14 +84,24 @@ export default class Header extends Component {
 
         <div className="profile-area">
           <div className="dropdown">
-            <img src={profilePic} alt="Profile" />
+            <img
+              className="profile-img"
+              src={
+                this.props.currentUser.photo
+                  ? this.props.currentUser.photo
+                  : profilePic
+              }
+              alt="Profile"
+            />
 
             <div>
               <span>{displayName}</span>
             </div>
             {/* <button class="dropbtn">Dropdown</button> */}
             <div className="dropdown-content">
-              <Link to="/profile">Profile</Link>
+              <Link to={`/profile/${this.props.currentUser.username}`}>
+                Profile
+              </Link>
               <a onClick={this.handleLogout}>Logout</a>
             </div>
           </div>

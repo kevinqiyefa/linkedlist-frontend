@@ -4,6 +4,7 @@ import Profile from '../../components/Profile';
 function mapStateToProps(reduxState) {
   return {
     currentUser: reduxState.currentUser
+    // userResults: reduxState.search.userResults
   };
 }
 

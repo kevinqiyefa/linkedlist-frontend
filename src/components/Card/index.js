@@ -49,15 +49,20 @@ class Card extends Component {
                     user.last_name.slice(1).toLowerCase()}
                 </p>
                 {user.current_company ? (
-                  <Link to="#">
-                    <strong>@{user.current_company}</strong>
-                  </Link>
+                  <div>
+                    Employed by @
+                    <Link to="#">
+                      <strong>{user.current_company.toLowerCase()}</strong>
+                    </Link>
+                  </div>
                 ) : (
                   'Unemployed'
                 )}
               </div>
             </div>
-            <button className="viewButton">View</button>
+            <Link to={{ pathname: `/profile/${user.username}`, state: user }}>
+              <button className="viewButton">View</button>
+            </Link>
           </div>
         );
       } else {
@@ -97,7 +102,7 @@ class Card extends Component {
           <div className="jobCard">
             <div className="img-job-info">
               <div className="job-result-info">
-                <p id="job-result-title">{job.title}</p>
+                <h3 id="job-result-title">{job.title.toUpperCase()}</h3>
 
                 <Link to="#">
                   <strong>@{job.company}</strong>

@@ -59,7 +59,11 @@ export default class Homepage extends Component {
                 />
               )}
             />
-            <ProtectedRoute exact path="/profile" component={Profile} />
+            <ProtectedRoute
+              exact
+              path="/profile/:username"
+              component={props => <Profile {...props} />}
+            />
             <ProtectedRoute exact path="/results" component={Results} />
           </Switch>
         )}

@@ -145,3 +145,7 @@
 }
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
+
+.profile-img {
+  border-radius: 5px;
+}

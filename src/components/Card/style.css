@@ -61,3 +61,8 @@
 .job-result-info {
   margin-left: 2em;
 }
+
+.viewButton:hover {
+  cursor: pointer;
+  padding: 0.55em 1.55em;
+}
