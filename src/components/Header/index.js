@@ -22,7 +22,7 @@ export default class Header extends Component {
       if (this.state.searchCategoryIdx === 2) {
         this.props.searchForUsers(this.state.searchText);
       } else if (this.state.searchCategoryIdx === 1) {
-        // search for jobs
+        this.props.searchForJobs(this.state.searchText);
       } else if (this.state.searchCategoryIdx === 0) {
         this.props.searchForCompanies(this.state.searchText);
       }

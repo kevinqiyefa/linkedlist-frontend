@@ -1,24 +1,27 @@
-.Card {
+.Card,
+.jobCard {
   background-color: white;
-  height: 5.5rem;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  margin: 0.8em;
+  margin: 1em;
   padding: 1.2em 2.4em;
   padding-left: 0.8em;
   width: 75vw;
-  max-width: 800px;
+  max-width: 700px;
   list-style-type: none;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 8px;
 }
 
 .img-job-info {
   display: flex;
   align-items: center;
 }
-.job-info {
+.job-info,
+.job-result-info {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -32,15 +35,29 @@
   padding-left: 0;
 }
 
-#sal-eq {
+#sal-eq,
+#user-result-info {
   margin-top: 0;
 }
+.company-name {
+  margin-top: 1em;
+}
 
-.applyButton {
+.applyButton,
+.viewButton {
   background-color: #00695c;
   color: white;
   font-size: 0.875rem;
   border: none;
   padding: 0.5em 1.5em;
   border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#equity {
+  margin-right: 1em;
+}
+
+.job-result-info {
+  margin-left: 2em;
 }

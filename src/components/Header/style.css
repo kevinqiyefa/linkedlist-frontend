@@ -114,20 +114,24 @@
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
   display: none;
+  /* margin-top: 0.2em; */
   position: absolute;
   background-color: #f9f9f9;
-  min-width: 160px;
+  width: 100%;
+  /* min-width: 160px; */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
   z-index: 1;
 }
 
 /* Links inside the dropdown */
 .dropdown-content a {
   color: black;
-  padding: 12px 16px;
+  padding: 0.6em 0.2em;
   text-decoration: none;
   display: block;
-  text-align: left;
+  text-align: center;
 }
 
 /* Change color of dropdown links on hover */

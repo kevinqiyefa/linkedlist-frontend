@@ -6,8 +6,8 @@ class HomeContent extends Component {
     return (
       <div>
         <div className="feed">
-          <h1>
-            <i className="material-icons">&#xe85d;</i>Jobs
+          <h1 className="home-results">
+            <i className="material-icons ">&#xe85d;</i>JOBS
           </h1>
           {this.props.content}
         </div>

@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 import Header from '../../containers/Header';
 import Card from '../Card';
 import ProtectedRoute from '../../containers/ProtectedRoute';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Redirect } from 'react-router-dom';
 import Profile from '../../containers/Profile';
 import './style.css';
 import HomeContent from '../HomeContent';
-import { getToken } from '../../services/token';
 import Results from '../../containers/Results';
 
 export default class Homepage extends Component {
@@ -47,7 +46,7 @@ export default class Homepage extends Component {
         />
 
         {this.state.loading ? (
-          <h1>Loading...</h1>
+          <div className="loader" />
         ) : (
           <Switch>
             <ProtectedRoute

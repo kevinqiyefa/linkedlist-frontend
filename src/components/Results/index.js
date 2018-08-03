@@ -16,14 +16,16 @@ class Results extends Component {
         <Card type="company-results" company={company} key={uuid()} />
       ));
     } else if (this.props.search.jobsResults.length) {
-      // blah blah blah
+      results = this.props.search.jobsResults.map(job => (
+        <Card type="job-results" job={job} key={uuid()} />
+      ));
     } else {
       results = <h2>No Results</h2>;
     }
 
     return (
-      <div>
-        <h2>
+      <div className="feed">
+        <h2 className="result-heading">
           <i className="material-icons">search</i>Search Results
         </h2>
         <div>{results}</div>
