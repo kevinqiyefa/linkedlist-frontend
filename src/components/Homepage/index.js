@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Header from '../../containers/Header';
-import Card from '../Card';
+import Card from '../../containers/Card';
 import ProtectedRoute from '../../containers/ProtectedRoute';
 import { Switch, Redirect } from 'react-router-dom';
 import Profile from '../../containers/Profile';
+import EditProfile from '../../containers/EditProfile';
 import './style.css';
 import HomeContent from '../HomeContent';
 import Results from '../../containers/Results';
@@ -33,7 +34,7 @@ export default class Homepage extends Component {
     } else {
       displayJobs = this.props.jobs.map(job => (
         <div key={job.id}>
-          <Card type={'jobs'} data={job} currentUser={this.props.currentUser} />
+          <Card type={'jobs'} data={job} />
         </div>
       ));
     }
@@ -64,6 +65,13 @@ export default class Homepage extends Component {
               path="/profile/:username"
               component={props => <Profile {...props} />}
             />
+
+            <ProtectedRoute
+              exact
+              path="/profile/:username/edit"
+              component={props => <EditProfile {...props} />}
+            />
+
             <ProtectedRoute exact path="/results" component={Results} />
           </Switch>
         )}

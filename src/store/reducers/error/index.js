@@ -69,6 +69,13 @@ export default function errorReducer(state = DEFAULT_STATE, action) {
         title: 'Unable to apply jobs.',
         message: action.error.message
       };
+    case t.UPDATE_CURRENT_USER_FAIL:
+      return {
+        ...state,
+        hasError: true,
+        title: 'Unable to update the curent user.',
+        message: action.error.message
+      };
     default:
       return state;
   }

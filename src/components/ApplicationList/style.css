@@ -1,0 +1,8 @@
+.job-header {
+  display: inline-flex;
+  align-items: center;
+}
+
+#job-result-title {
+  margin-right: 1em;
+}

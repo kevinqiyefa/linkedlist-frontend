@@ -1,0 +1,25 @@
+.signup-form-row > button,
+.goback-form-row > button {
+  background-color: #00695c;
+  color: white;
+  font-size: 0.875rem;
+  border: none;
+
+  padding: 0.5rem 1rem;
+  border-radius: 2px;
+  margin-right: 1em;
+}
+
+.goback-form-row > button {
+  background-color: gray;
+}
+
+.goback-form-row > button:hover {
+  cursor: pointer;
+  background-color: rgb(185, 181, 181);
+}
+
+.signup-form-row > button:hover {
+  cursor: pointer;
+  background-color: #48a999;
+}

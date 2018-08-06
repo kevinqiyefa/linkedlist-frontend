@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import UserProfilePlaceholder from '../../images/user_placeholder.png';
 import { Link } from 'react-router-dom';
 import uuid from 'uuid/v1';
+import ApplicationList from '../ApplicationList';
 
 import './style.css';
 class Profile extends Component {
@@ -21,9 +22,14 @@ class Profile extends Component {
       <div className="feed">
         <div className="profile-card">
           {isCurrentUser ? (
-            <Link to="#" className="edit-profile">
-              Edit
-            </Link>
+            <div>
+              <Link
+                to={`/profile/${this.props.currentUser.username}/edit`}
+                className="edit-profile"
+              >
+                Edit
+              </Link>
+            </div>
           ) : (
             ''
           )}
@@ -62,8 +68,14 @@ class Profile extends Component {
             </h2>
             <ul />
             {user.applied_to.map(job => (
-              <li key={uuid()}>{`Job id: ${job}`}</li>
+              // <li key={uuid()}>{`Job id: ${job}`}</li>
+
+              <ApplicationList
+                key={uuid()}
+                job={this.props.jobs.filter(j => j.id === job)}
+              />
             ))}
+            {!user.applied_to.length ? <h3>Please apply some jobs!</h3> : ''}
           </div>
         ) : (
           ''
@@ -74,6 +86,7 @@ class Profile extends Component {
 }
 
 Profile.propTypes = {
-  currentUser: PropTypes.object
+  currentUser: PropTypes.object,
+  jobs: PropTypes.array
 };
 export default Profile;

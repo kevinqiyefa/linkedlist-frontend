@@ -7,10 +7,8 @@ import userimageurl from '../../images/user_placeholder.png';
 import companyimageurl from '../../images/company_placeholder.png';
 
 class Card extends Component {
-  handleApply = () => {
-    // if (this.state.searchCategoryIdx === 2) {
-    //   this.props.searchForUsers(this.state.searchText);
-    // }
+  handleApply = job_id => {
+    this.props.applyJob(job_id);
   };
 
   render() {
@@ -31,13 +29,16 @@ class Card extends Component {
               </p>
 
               <p id="sal-eq">
-                {job.salary} | {job.equity}
+                $ {job.salary} | {job.equity}
               </p>
             </div>
           </div>
 
           {!this.props.currentUser.applied_to.includes(job.id) ? (
-            <button className="applyButton" onClick={this.handleApply}>
+            <button
+              className="applyButton"
+              onClick={() => this.handleApply(job.id)}
+            >
               Apply
             </button>
           ) : (
@@ -128,7 +129,16 @@ class Card extends Component {
                 </p>
               </div>
             </div>
-            <button className="applyButton">Apply</button>
+            {!this.props.currentUser.applied_to.includes(job.id) ? (
+              <button
+                className="applyButton"
+                onClick={() => this.handleApply(job.id)}
+              >
+                Apply
+              </button>
+            ) : (
+              <button className="appliedButton">Applied</button>
+            )}
           </div>
         );
       } else {
@@ -142,6 +152,7 @@ class Card extends Component {
 
 Card.propTypes = {
   type: PropTypes.string,
-  data: PropTypes.object
+  data: PropTypes.object,
+  currentUser: PropTypes.object
 };
 export default Card;

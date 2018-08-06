@@ -67,6 +67,7 @@
 .applyButton:hover {
   cursor: pointer;
   padding: 0.55em 1.55em;
+  background-color: #48a999;
 }
 
 .appliedButton {
