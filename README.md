@@ -1,12 +1,14 @@
 # LinkedList Frontend
 
+![LinkList Gif](linklist.gif)
+
 ## Setup Instructions
 
 ### Git
 
 1.  Clone the Repo
-1.  Change the upstream to your own (`git remote set-url origin <your-repo>`)
-1.  `git push -u origin master`
+2.  Change the upstream to your own (`git remote set-url origin <your-repo>`)
+3.  `git push -u origin master`
 
 ### React
 
